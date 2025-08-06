@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: pathotracer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pathotracer123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+    restart: unless-stopped
+
+  pathotracer:
+    build: .
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: pathotracer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pathotracer123
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./backups:/app/backups
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

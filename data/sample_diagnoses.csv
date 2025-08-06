@@ -1,0 +1,4 @@
+sample_id,location_name,variety_name,pathogen_name,confidence_score,risk_level,severity,affected_area,temperature,humidity,rainfall
+SAMPLE001,Field A,IR64,Magnaporthe oryzae,0.85,High,7,35,25.5,85,15.2
+SAMPLE002,Field B,PSB Rc82,Rhizoctonia solani,0.92,High,8,45,28.0,90,8.5
+SAMPLE003,Field A,NSIC Rc222,Xanthomonas oryzae,0.78,Medium,5,20,32.1,78,22.1
